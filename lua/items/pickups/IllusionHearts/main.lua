@@ -8,7 +8,7 @@ function IllusionModLocal:preIllusionHeartPickup(pickup, collider)
 		if
 			pickup.Variant == PickupVariant.PICKUP_HEART
 			and pickup.SubType == RestoredHearts.Enums.Pickups.Hearts.HEART_ILLUSION
-			and not player.Parent
+			and player.Parent
 		then
 			pickup.Velocity = Vector.Zero
 			pickup.EntityCollisionClass = EntityCollisionClass.ENTCOLL_NONE
@@ -20,7 +20,7 @@ function IllusionModLocal:preIllusionHeartPickup(pickup, collider)
 		end
 	end
 end
-RestoredHearts:AddCallback(ModCallbacks.MC_PRE_PICKUP_COLLISION, IllusionModLocal.preIllusionHeartPickup)
+--RestoredHearts:AddCallback(ModCallbacks.MC_PRE_PICKUP_COLLISION, IllusionModLocal.preIllusionHeartPickup)
 
 ---@param pickup EntityPickup
 function IllusionModLocal:PreGoldenSpawn(pickup)

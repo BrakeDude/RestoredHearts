@@ -15,7 +15,8 @@ CustomHealthAPI.Library.RegisterSoulHealth(
         HealFlashGO = 240/255,
         HealFlashBO = 240/255,
         MaxHP = 2,
-        PrioritizeHealing = true,
+        CollectSound = { ID = RestoredHearts.Enums.SFX.Hearts.IMMORTAL_PICKUP, Volume = 1.0, Pitch = 1.0 },
+	    PrioritizeHealing = true,
         PickupEntities = {
             {ID = EntityType.ENTITY_PICKUP, Var = PickupVariant.PICKUP_HEART, Sub = RestoredHearts.Enums.Pickups.Hearts.HEART_IMMORTAL}
         },
@@ -33,6 +34,15 @@ CustomHealthAPI.Library.RegisterSoulHealth(
     }
 )
 
+CustomHealthAPI.Library.RegisterHeartPickup(PickupVariant.PICKUP_HEART, RestoredHearts.Enums.Pickups.Hearts.HEART_IMMORTAL, {
+	HealthKeys = {"HEART_IMMORTAL"},
+	HealthAmount = 2,
+	DropSound = SoundEffect.SOUND_MEAT_FEET_SLOW0,
+	AllowCandyHeartSoulLocketBonus = true,
+	AllowImmaculateConception = false,
+    AllowMagneto = true,
+})
+
 CustomHealthAPI.Library.RegisterSoulHealth(
     "HEART_SUN",
     {
@@ -45,6 +55,7 @@ CustomHealthAPI.Library.RegisterSoulHealth(
         HealFlashBO = 240/255,
         MaxHP = 1,
         PrioritizeHealing = false,
+        CollectSound = { ID = RestoredHearts.Enums.SFX.Hearts.SUN_PICKUP, Volume = 1.0, Pitch = 1.0 },
         PickupEntities = {
             {ID = EntityType.ENTITY_PICKUP, Var = PickupVariant.PICKUP_HEART, Sub = RestoredHearts.Enums.Pickups.Hearts.HEART_SUN}
         },
@@ -61,6 +72,51 @@ CustomHealthAPI.Library.RegisterSoulHealth(
         }
     }
 )
+
+CustomHealthAPI.Library.RegisterHeartPickup(PickupVariant.PICKUP_HEART, RestoredHearts.Enums.Pickups.Hearts.HEART_SUN, {
+	HealthKeys = {"HEART_SUN"},
+	HealthAmount = 2,
+	DropSound = SoundEffect.SOUND_MEAT_FEET_SLOW0,
+	AllowCandyHeartSoulLocketBonus = true,
+	AllowImmaculateConception = false,
+    AllowMagneto = true,
+})
+
+CustomHealthAPI.Library.RegisterSoulHealth(
+    "HEART_ILLUSION",
+    {
+        AnimationFilename = "gfx/ui/ui_remix_hearts.anm2",
+        AnimationName = {"IllusionHeartFull"},
+        SortOrder = 100,
+        AddPriority = 125,
+        HealFlashRO = 240/255, 
+        HealFlashGO = 240/255,
+        HealFlashBO = 240/255,
+        MaxHP = 2,
+        PrioritizeHealing = false,
+        CollectSound = { ID = RestoredHearts.Enums.SFX.Hearts.ILLUSION_PICKUP, Volume = 1.0, Pitch = 1.0 },
+        PickupEntities = {
+            {ID = EntityType.ENTITY_PICKUP, Var = PickupVariant.PICKUP_HEART, Sub = RestoredHearts.Enums.Pickups.Hearts.HEART_ILLUSION}
+        },
+    }
+)
+
+CustomHealthAPI.Library.RegisterHeartPickup(PickupVariant.PICKUP_HEART, RestoredHearts.Enums.Pickups.Hearts.HEART_ILLUSION, {
+	HealthKeys = {"HEART_ILLUSION"},
+	HealthAmount = 0,
+	DropSound = SoundEffect.SOUND_MEAT_FEET_SLOW0,
+	AllowCandyHeartSoulLocketBonus = false,
+	AllowImmaculateConception = false,
+    ManualAddHealth = true,
+    AllowMagneto = true,
+    CanCollect = function(player, pickup)
+        return not player.Parent and not IllusionMod.GetData(player).IsIllusion
+    end,
+    OnCollect = function(player, pickup)
+        CustomHealthAPI.Library.PlayHealthCollectSound("HEART_ILLUSION")
+        IllusionMod:addIllusion(player, true)
+    end
+})
 
 local function HeartGfxSuffix(var, hud)
     local suf = ""
@@ -132,25 +188,9 @@ end)
 
 CustomHealthAPI.Library.AddCallback("RestoredHearts", CustomHealthAPI.Enums.Callbacks.PRE_RENDER_HEART, 0, function(player, index, hp, redHP, filename, animname, color, offset)
 	local data = IllusionMod.GetData(player)
-	if data.IsIllusion and not player:IsDead() then
-		local var = RestoredHearts:GetDefaultFileSave("HeartStyleRender")
-		local animfile = "gfx/ui/ui_remix_hearts"..HeartGfxSuffix(var, true)
-		return {AnimationName = "IllusionHeartFull", AnimationFilename = animfile..".anm2"}
+	if data.IsIllusion and not player:IsDead() and CustomHealthAPI.Helper.PlayerHasCoinHealth(player) then
+		return {AnimationName = "IllusionCoinFull", AnimationFilename = "gfx/ui/ui_remix_hearts.anm2"}
 	end
-end)
-
-CustomHealthAPI.Library.AddCallback("RestoredHearts", CustomHealthAPI.Enums.Callbacks.ON_SAVE, 0, function(save, isSaving)
-    if isSaving then
-        local chapiSave = RestoredHearts:RunSave()
-        chapiSave.CustomHealthAPI = save
-    end
-end)
-
-CustomHealthAPI.Library.AddCallback("RestoredHearts", CustomHealthAPI.Enums.Callbacks.ON_LOAD, 0, function()
-    local chapiSave = RestoredHearts:RunSave()
-    if chapiSave.CustomHealthAPI ~= nil and chapiSave.CustomHealthAPI ~= "" then
-        return chapiSave.CustomHealthAPI
-    end
 end)
 
 CustomHealthAPI.Library.AddCallback("RestoredHearts", CustomHealthAPI.Enums.Callbacks.PRE_SUMPTORIUM_CLOT_INIT, 0, function(familiar, key)

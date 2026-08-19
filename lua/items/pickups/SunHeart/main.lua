@@ -31,11 +31,11 @@ function ComplianceSunLocal:SunHeartCollision(pickup, collider)
 		end
 	end
 end
-RestoredHearts:AddCallback(
+--[[RestoredHearts:AddCallback(
 	ModCallbacks.MC_PRE_PICKUP_COLLISION,
 	ComplianceSunLocal.SunHeartCollision,
 	PickupVariant.PICKUP_HEART
-)
+)]]
 
 ---@param pickup EntityPickup
 function ComplianceSunLocal:PreEternalSpawn(pickup)

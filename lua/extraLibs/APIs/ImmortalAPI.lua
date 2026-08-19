@@ -110,7 +110,7 @@ local function load()
 		end
 	end
 	if REPENTOGON then
-		ComplianceImmortal:AddCallback(ModCallbacks.MC_POST_TAKE_DMG, ImmortalHeartIFrames, EntityType.ENTITY_PLAYER)
+		ComplianceImmortal:AddCallback(ModCallbacks.MC_POST_ENTITY_TAKE_DMG, ImmortalHeartIFrames, EntityType.ENTITY_PLAYER)
 	else
 		ComplianceImmortal:AddCallback(ModCallbacks.MC_POST_PEFFECT_UPDATE, ImmortalHeartIFrames)
 	end

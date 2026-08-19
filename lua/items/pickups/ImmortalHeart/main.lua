@@ -29,11 +29,11 @@ function ComplianceImmortalLocal:ImmortalHeartCollision(pickup, collider)
 		end
 	end
 end
-RestoredHearts:AddCallback(
+--[[RestoredHearts:AddCallback(
 	ModCallbacks.MC_PRE_PICKUP_COLLISION,
 	ComplianceImmortalLocal.ImmortalHeartCollision,
 	PickupVariant.PICKUP_HEART
-)
+)]]
 
 if REPENTOGON then
 	function ComplianceImmortalLocal:ActOfImmortal(collectible, charge, firstTime, slot, VarData, player)

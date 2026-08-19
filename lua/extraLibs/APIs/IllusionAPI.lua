@@ -226,13 +226,12 @@ local function load(prevData)
 		illusionPlayer:AddEternalHearts(-illusionPlayer:GetEternalHearts())
 		illusionPlayer:AddHearts(-illusionPlayer:GetHearts())
 
-		if illusionPlayer:GetPlayerType() == PlayerType.PLAYER_THEFORGOTTEN then
-			illusionPlayer:AddBoneHearts(1)
-		else
+		if CustomHealthAPI.Helper.PlayerHasCoinHealth(illusionPlayer) then
 			illusionPlayer:AddMaxHearts(2)
+			illusionPlayer:AddHearts(2)
+		else
+			CustomHealthAPI.Library.AddHealth(illusionPlayer, "HEART_ILLUSION", 2)
 		end
-
-		illusionPlayer:AddHearts(2)
 	end
 
 	---@param illusionPlayer EntityPlayer
