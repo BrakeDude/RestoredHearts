@@ -11,19 +11,19 @@ keeper
 {{FSIZE2}}updated
 - updated chapi to version 0.967
 ]],
-{"restored", "hearts", "", "v1.3.6", "release"}, false, false)
+{"restored", "hearts", "", "v1.3.6", "update"}, false, false)
 
 DeadSeaScrollsMenu.AddChangelog(modname, "v1.3.5", [[{{FSIZE2}}fixes
 - fixed illusions getting more than
 one hp
 - fixed illusions collision with bed
 ]],
-{"restored", "hearts", "", "v1.3.5", "release"}, false, false)
+{"restored", "hearts", "", "v1.3.5", "update"}, false, false)
 
 DeadSeaScrollsMenu.AddChangelog(modname, "v1.3.4", [[{{FSIZE2}}fixes
 - fixed eid errors on launch
 ]],
-{"restored", "hearts", "", "v1.3.4", "release"}, false, false)
+{"restored", "hearts", "", "v1.3.4", "update"}, false, false)
 
 DeadSeaScrollsMenu.AddChangelog(modname, "v1.3.3", [[{{FSIZE2}}added
 - modded hearts now convert to
@@ -39,18 +39,18 @@ not zero
 - fixed clone's health icon in big
 rooms (by piber)
 ]],
-{"restored", "hearts", "", "v1.3.3", "release"}, false, false)
+{"restored", "hearts", "", "v1.3.3", "update"}, false, false)
 
 DeadSeaScrollsMenu.AddChangelog(modname, "v1.3.2", [[{FSIZE2}fixes
 - fixed minimapapi icons
 ]],
-{"restored", "hearts", "", "v1.3.2", "release"}, false, false)
+{"restored", "hearts", "", "v1.3.2", "update"}, false, false)
 
 DeadSeaScrollsMenu.AddChangelog(modname, "v1.3.1", [[{FSIZE2}fixes
 - fixed dss settings of immortal
 hearts affecting illusion hearts
 ]],
-{"restored", "hearts", "", "v1.3.1", "release"}, false, false)
+{"restored", "hearts", "", "v1.3.1", "update"}, false, false)
 
 DeadSeaScrollsMenu.AddChangelog(modname, "v1.3", [[{FSIZE2}fixes
 - fixed dss settings not saving
