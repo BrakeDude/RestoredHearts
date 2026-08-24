@@ -1,5 +1,18 @@
 local modname = "Restored Hearts"
 
+DeadSeaScrollsMenu.AddChangelog(modname, "v1.3.6", [[{{FSIZE2}}fixes
+- fixed illusions not working with
+keepers
+
+{{FSIZE2}}added
+- illusion coin gfx for clone
+keeper
+
+{{FSIZE2}}updated
+- updated chapi to version 0.967
+]],
+{"restored", "hearts", "", "v1.3.6", "release"}, false, false)
+
 DeadSeaScrollsMenu.AddChangelog(modname, "v1.3.5", [[{{FSIZE2}}fixes
 - fixed illusions getting more than
 one hp
