@@ -3,6 +3,7 @@ RestoredHearts = RegisterMod("Restored Hearts", 1)
 local LOCAL_TSIL = require("lua.extraLibs.loi.TSIL")
 LOCAL_TSIL.Init("lua.extraLibs.loi")
 
+include("lua.helpers.getdatacache")
 include("lua.helpers.Helpers")
 
 --apis

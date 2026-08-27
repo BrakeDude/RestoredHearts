@@ -167,8 +167,8 @@ end
 ---@param entity Entity
 ---@return table | nil?
 function Helpers.GetData(entity)
-	if entity and entity.GetData then
-		local data = entity:GetData()
+	if entity then
+		local data = GetDataCache and GetDataCache.GetEntityData(entity) or entity:GetData()
 		if not data.RestoredHearts then
 			data.RestoredHearts = {}
 		end
