@@ -1,5 +1,11 @@
 local modname = "Restored Hearts"
 
+DeadSeaScrollsMenu.AddChangelog(modname, "v1.3.7",[[{{FSIZE2}}fixes
+- fixed crashes with caused by
+illusion clones
+]],
+{"restored", "hearts", "", "v1.3.7", "update"}, false, false)
+
 DeadSeaScrollsMenu.AddChangelog(modname, "v1.3.6", [[{{FSIZE2}}fixes
 - fixed illusions not working with
 keepers
